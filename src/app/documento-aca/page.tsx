@@ -4,7 +4,7 @@ import { useState } from "react";
 import { CumbreLogo } from "@/components/Icons";
 
 export default function DocumentoAcaPage() {
-  const [integrantes, setIntegrantes] = useState("Nombre del Estudiante (Editar aquí)");
+  const [integrantes, setIntegrantes] = useState("Sergio Yepes");
   const [docente, setDocente] = useState("Docente de Informática y Convergencia");
   const [institucion, setInstitucion] = useState("Corporación Unificada Nacional de Educación Superior (CUN)");
   const [urlPublicada, setUrlPublicada] = useState("https://cumbre-cafe-marketplace.vercel.app");

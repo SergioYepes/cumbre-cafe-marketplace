@@ -298,14 +298,14 @@ export async function listProducts(q: ProductQuery) {
       ...(q.process ? { process: { equals: q.process, mode: "insensitive" } } : {}),
       ...(q.q
         ? {
-            OR: [
-              { name: { contains: q.q, mode: "insensitive" } },
-              { description: { contains: q.q, mode: "insensitive" } },
-              { origin: { contains: q.q, mode: "insensitive" } },
-              { tastingNotes: { has: q.q.toLowerCase() } },
-              { brand: { name: { contains: q.q, mode: "insensitive" } } },
-            ],
-          }
+          OR: [
+            { name: { contains: q.q, mode: "insensitive" } },
+            { description: { contains: q.q, mode: "insensitive" } },
+            { origin: { contains: q.q, mode: "insensitive" } },
+            { tastingNotes: { has: q.q.toLowerCase() } },
+            { brand: { name: { contains: q.q, mode: "insensitive" } } },
+          ],
+        }
         : {}),
     };
 
