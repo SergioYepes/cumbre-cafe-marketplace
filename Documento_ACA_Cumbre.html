@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documento del Proyecto ACA — Cumbre Marketplace de Café</title>
+  <style>
+    @page {
+      size: letter;
+      margin: 16mm 18mm;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+      color: #1c1613;
+      background: #ffffff;
+      line-height: 1.58;
+      font-size: 10.5pt;
+    }
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .cover {
+      text-align: center;
+      padding-bottom: 18px;
+      margin-bottom: 20px;
+      border-bottom: 2.5px solid #c76b3a;
+    }
+    .badge {
+      display: inline-block;
+      background: #fdf5ea;
+      color: #9b5222;
+      border: 1px solid #e0a458;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 8.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 24pt;
+      color: #1a110b;
+      margin-top: 6px;
+    }
+    .slogan {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 11.5pt;
+      color: #9b5222;
+      font-style: italic;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+    .subtitle {
+      font-size: 9.5pt;
+      color: #5a473a;
+      margin-top: 4px;
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      text-align: left;
+      background: #faf6f1;
+      border: 1px solid #eadbc8;
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-top: 14px;
+    }
+    .meta-grid strong {
+      display: block;
+      font-size: 7.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #7d6552;
+    }
+    .meta-grid span {
+      font-size: 9.5pt;
+      color: #1c1613;
+      font-weight: 600;
+    }
+    .sec {
+      margin-bottom: 16px;
+      page-break-inside: avoid;
+    }
+    h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 13pt;
+      color: #1a110b;
+      border-left: 4px solid #c76b3a;
+      padding-left: 9px;
+      margin-bottom: 8px;
+    }
+    h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 11pt;
+      color: #1a110b;
+      margin-bottom: 4px;
+    }
+    p {
+      margin-bottom: 6px;
+      text-align: justify;
+    }
+    ul {
+      padding-left: 18px;
+    }
+    li {
+      margin-bottom: 5px;
+      text-align: justify;
+    }
+    .box {
+      background: #faf6f1;
+      border: 1px solid #eadbc8;
+      border-radius: 10px;
+      padding: 11px 14px;
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9.2pt;
+      margin-top: 6px;
+    }
+    th, td {
+      border: 1px solid #dfd0bd;
+      padding: 6px 9px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #f3e9dc;
+      color: #3b2818;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="cover">
+      <div class="badge">Actividad de Construcción Aplicada (ACA) · Informática y Convergencia</div>
+      <div style="margin: 6px 0;">
+        <svg width="68" height="68" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#e0a458" />
+              <stop offset="100%" stop-color="#c76b3a" />
+            </linearGradient>
+            <linearGradient id="g2" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#2c1f15" />
+              <stop offset="100%" stop-color="#160f0b" />
+            </linearGradient>
+          </defs>
+          <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#g2)" stroke="url(#g1)" stroke-width="2.4" />
+          <ellipse cx="32" cy="21" rx="7.5" ry="9.5" transform="rotate(-18 32 21)" fill="url(#g1)" opacity="0.24" />
+          <ellipse cx="32" cy="21" rx="5.5" ry="7.5" transform="rotate(-18 32 21)" stroke="url(#g1)" stroke-width="2" />
+          <path d="M30 14.5C32.5 18 31.5 23 34 27.5" stroke="url(#g1)" stroke-width="1.8" stroke-linecap="round" />
+          <path d="M10 47L24 27L34 39L42 29L54 47H10Z" fill="url(#g1)" fill-opacity="0.2" />
+          <path d="M10 47L24 27L34 39L42 29L54 47" stroke="url(#g1)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M14 51H50" stroke="#e0a458" stroke-width="2" stroke-linecap="round" opacity="0.7" />
+        </svg>
+      </div>
+      <h1>Cumbre.</h1>
+      <div class="slogan">«Los mejores tostadores de Colombia, del origen a tu taza.»</div>
+      <div class="subtitle">Diseño y creación de una página web funcional con identidad visual y recursos digitales</div>
+
+      <div class="meta-grid">
+        <div>
+          <strong>Nombre del proyecto o marca</strong>
+          <span>Cumbre — Marketplace de Café de Especialidad</span>
+        </div>
+        <div>
+          <strong>Integrante(s)</strong>
+          <span>Estudiante de Informática y Convergencia</span>
+        </div>
+        <div>
+          <strong>Tema seleccionado</strong>
+          <span>Emprendimiento digital, Comercio Electrónico y Café de Especialidad Colombiano</span>
+        </div>
+        <div>
+          <strong>Enlace de acceso a la página web</strong>
+          <span style="color: #9b5222;">https://cumbre-cafe-marketplace.vercel.app</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="sec">
+      <h2>1. Nombre del proyecto y Tema seleccionado</h2>
+      <p>
+        <strong>Nombre del proyecto o marca:</strong> Cumbre.<br />
+        <strong>Temática seleccionada:</strong> Emprendimiento digital, Comercio Electrónico (Marketplace), Agroindustria Cafetera Colombiana y Cultura del Café de Especialidad.
+      </p>
+    </section>
+
+    <section class="sec">
+      <h2>2. Descripción del proyecto</h2>
+      <p>
+        <strong>Cumbre</strong> es una página web funcional de comercio electrónico (marketplace) e identidad corporativa creada para conectar directamente a pequeños caficultores y marcas tostadoras artesanales de Colombia (de regiones cafeteras como Huila, Nariño, Cauca, Quindío y Santander) con consumidores amantes del buen café en todo el país.
+      </p>
+      <p>
+        La plataforma elimina intermediarios innecesarios y permite consultar la trazabilidad completa de cada lote: origen geográfico, proceso de beneficio (lavado, honey, natural o fermentación anaeróbica), perfil de tueste, puntaje SCA y notas sensoriales, integrando además planes de suscripción periódica y un portal de registro para marcas tostadoras.
+      </p>
+    </section>
+
+    <section class="sec">
+      <h2>3. Logo propio y Eslogan</h2>
+      <div class="box" style="display: flex; gap: 14px; align-items: center;">
+        <div style="flex-shrink: 0;">
+          <svg width="58" height="58" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="60" height="60" rx="16" fill="#221810" stroke="#e0a458" stroke-width="2.4" />
+            <ellipse cx="32" cy="21" rx="7.5" ry="9.5" transform="rotate(-18 32 21)" fill="#e0a458" opacity="0.24" />
+            <ellipse cx="32" cy="21" rx="5.5" ry="7.5" transform="rotate(-18 32 21)" stroke="#e0a458" stroke-width="2" />
+            <path d="M30 14.5C32.5 18 31.5 23 34 27.5" stroke="#e0a458" stroke-width="1.8" stroke-linecap="round" />
+            <path d="M10 47L24 27L34 39L42 29L54 47H10Z" fill="#e0a458" fill-opacity="0.2" />
+            <path d="M10 47L24 27L34 39L42 29L54 47" stroke="#e0a458" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M14 51H50" stroke="#e0a458" stroke-width="2" stroke-linecap="round" opacity="0.7" />
+          </svg>
+        </div>
+        <div>
+          <p style="margin-bottom: 4px;">
+            <strong>Logo propio:</strong> Isotipo vectorial original que fusiona las tres cordilleras andinas de Colombia (donde se cultiva el café de altura entre los 1.500 y 2.200 m s. n. m.) con un grano de café naciente que evoca el sol sobre las montañas, empleando tonos dorado miel (<code>#e0a458</code>), cobre tostado (<code>#c76b3a</code>) y espresso oscuro (<code>#120d0a</code>).
+          </p>
+          <p style="margin-bottom: 0;">
+            <strong>Eslogan:</strong> <em>«Los mejores tostadores de Colombia, del origen a tu taza.»</em>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>4. Misión y Visión</h2>
+      <div class="two-col">
+        <div class="box">
+          <h3>Misión</h3>
+          <p style="margin-bottom: 0;">
+            Democratizar el acceso al café de especialidad colombiano conectando de manera directa, justa y transparente a pequeños caficultores y tostadores artesanales verificados con consumidores de todo el país, mediante una plataforma digital convergente que garantiza tueste fresco, trazabilidad de origen y comercio electrónico seguro.
+          </p>
+        </div>
+        <div class="box">
+          <h3>Visión</h3>
+          <p style="margin-bottom: 0;">
+            Consolidarnos para el año 2030 como el marketplace líder de café de especialidad en Latinoamérica, reconocido por impulsar el desarrollo sostenible de más de 200 marcas tostadoras y familias caficultoras colombianas, transformando la cultura de consumo local hacia un café ético, trazable y de excelencia sensorial.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>5. Herramientas utilizadas</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Categoría</th>
+            <th>Herramienta / Plataforma</th>
+            <th>Aplicación en el proyecto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Creación y Desarrollo Web</td>
+            <td>Next.js 16, React 19, TypeScript y HTML5</td>
+            <td>Construcción de la página de inicio, navegación, catálogo interactivo, carrito y formularios.</td>
+          </tr>
+          <tr>
+            <td>Diseño Visual y Maquetación</td>
+            <td>CSS3 (Variables, Grid, Flexbox) y Google Fonts (<em>Fraunces</em> e <em>Inter</em>)</td>
+            <td>Sistema de diseño adaptable (responsive), paleta cromática cafetera y animaciones suaves.</td>
+          </tr>
+          <tr>
+            <td>Diseño Gráfico e Imágenes</td>
+            <td>SVG Vectorial nativo, Unsplash y generación digital asistida por IA</td>
+            <td>Diseño del logo propio de Cumbre e integración de 4 imágenes temáticas con atribución de fuente.</td>
+          </tr>
+          <tr>
+            <td>Datos y Persistencia</td>
+            <td>Prisma ORM + SQLite</td>
+            <td>Gestión estructurada de cafés, marcas tostadoras, variantes de peso/molienda y pedidos.</td>
+          </tr>
+          <tr>
+            <td>Generación y Revisión de Textos</td>
+            <td>Gemini / Asistentes de IA</td>
+            <td>Redacción y corrección ortográfica de misión, visión, eslogan y descripciones sensoriales.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="sec">
+      <h2>6. Descripción de las principales funcionalidades</h2>
+      <ul>
+        <li><strong>Página de inicio e Identidad Corporativa:</strong> Presenta el nombre de la marca (Cumbre), el logo vectorial propio, el eslogan, indicadores clave (+40 orígenes, despacho en 48 h, 100% tostado fresco), la Misión y la Visión institucional.</li>
+        <li><strong>Catálogo interactivo con filtrado dinámico:</strong> Permite buscar cafés por texto libre (origen, marca o nota sensorial) y filtrar por perfil de tueste (Claro, Medio, Medio-oscuro).</li>
+        <li><strong>Galería visual temática (4 imágenes con fuente):</strong> Sección dedicada que ilustra la extracción en taza y los tres niveles de tueste con sus descripciones técnicas y atribución de derechos de autor.</li>
+        <li><strong>Carrito de compras interactivo y Checkout:</strong> Permite añadir productos, modificar cantidades, calcular barra de envío gratis y simular pagos digitales (Wompi, PSE, Nequi, Bre-B y contraentrega).</li>
+        <li><strong>Planes de Suscripción y Portal de Marcas:</strong> Vistas especializadas para configurar entregas periódicas de café y para que productores/tostadores registren su marca en la plataforma.</li>
+        <li><strong>Sección de Información de Contacto y Formulario:</strong> Incluye dirección física en Bogotá, correos corporativos, líneas telefónicas/WhatsApp, horarios de atención, redes sociales (<code>@cumbrecafe.co</code>) y formulario interactivo de contacto.</li>
+      </ul>
+    </section>
+
+    <section class="sec" style="margin-bottom: 0;">
+      <h2>7. Fuentes consultadas</h2>
+      <ul>
+        <li><strong>Federación Nacional de Cafeteros de Colombia (FNC).</strong> (2026). <em>Denominaciones de origen y regiones cafeteras de Colombia (Huila, Nariño, Cauca, Quindío y Santander)</em>. Recuperado de https://federaciondecafeteros.org/</li>
+        <li><strong>Specialty Coffee Association (SCA).</strong> (2025). <em>Coffee Standards &amp; Cupping Protocols</em>. Recuperado de https://sca.coffee/research/coffee-standards</li>
+        <li><strong>Unsplash.</strong> (2026). <em>Fotografías de café de especialidad y perfiles de tueste bajo Licencia Libre Unsplash</em>. Recuperado de https://unsplash.com/license</li>
+        <li><strong>Vercel &amp; Next.js Documentation.</strong> (2026). <em>Next.js App Router Documentation</em>. Recuperado de https://nextjs.org/docs</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>
+

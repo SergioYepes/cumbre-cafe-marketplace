@@ -1,0 +1,331 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ───────── Enums ─────────
+enum Role {
+  CUSTOMER
+  BRAND
+  ADMIN
+}
+
+enum BrandStatus {
+  PENDING
+  ACTIVE
+  SUSPENDED
+}
+
+enum RoastLevel {
+  LIGHT
+  MEDIUM_LIGHT
+  MEDIUM
+  MEDIUM_DARK
+  DARK
+}
+
+enum GrindType {
+  WHOLE_BEAN
+  ESPRESSO
+  FILTER
+  FRENCH_PRESS
+  MOKA
+}
+
+enum OrderStatus {
+  CREATED
+  PENDING_PAYMENT
+  PAID
+  CANCELLED
+}
+
+enum SubOrderStatus {
+  PENDING
+  PREPARING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  RETURNED
+}
+
+enum PaymentMethod {
+  WOMPI
+  PAYU
+  BOLD
+  BREB
+  COD // contraentrega
+}
+
+enum PaymentStatus {
+  PENDING
+  APPROVED
+  DECLINED
+  REFUNDED
+}
+
+enum PayoutStatus {
+  PENDING
+  PAID
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  PAUSED
+  CANCELLED
+}
+
+enum SubscriptionFrequency {
+  WEEKLY
+  BIWEEKLY
+  MONTHLY
+}
+
+enum AdPlacement {
+  HOME_BANNER
+  CATEGORY_FEATURED
+  SPONSORED_PRODUCT
+}
+
+// ───────── Usuarios ─────────
+model User {
+  id            String         @id @default(cuid())
+  email         String         @unique
+  name          String
+  phone         String?
+  passwordHash  String
+  role          Role           @default(CUSTOMER)
+  createdAt     DateTime       @default(now())
+  addresses     Address[]
+  orders        Order[]
+  reviews       Review[]
+  subscriptions Subscription[]
+  brand         Brand?
+}
+
+model Address {
+  id         String  @id @default(cuid())
+  userId     String
+  user       User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  label      String?
+  recipient  String
+  phone      String
+  department String
+  city       String
+  line1      String
+  line2      String?
+  notes      String?
+  isDefault  Boolean @default(false)
+  orders     Order[]
+  subscriptions Subscription[]
+}
+
+// ───────── Marcas ─────────
+model BrandPlan {
+  id            String  @id @default(cuid())
+  name          String  @unique // Básico, Pro
+  monthlyFeeCop Int
+  commissionBps Int // puntos básicos: 1200 = 12 %
+  brands        Brand[]
+}
+
+model Brand {
+  id                  String       @id @default(cuid())
+  ownerId             String       @unique
+  owner               User         @relation(fields: [ownerId], references: [id])
+  slug                String       @unique
+  name                String
+  story               String?
+  logoUrl             String?
+  coverUrl            String?
+  city                String
+  nit                 String?
+  invimaRegistry      String?
+  status              BrandStatus  @default(PENDING)
+  planId              String?
+  plan                BrandPlan?   @relation(fields: [planId], references: [id])
+  dispatchHours       Int          @default(48) // SLA de despacho
+  freeShippingFromCop Int?
+  createdAt           DateTime     @default(now())
+  products            Product[]
+  subOrders           SubOrder[]
+  payouts             Payout[]
+  campaigns           AdCampaign[]
+}
+
+// ───────── Catálogo ─────────
+model Product {
+  id           String     @id @default(cuid())
+  brandId      String
+  brand        Brand      @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  slug         String     @unique
+  name         String
+  description  String
+  imageUrl     String?
+  origin       String // país/región
+  farm         String?
+  altitudeMasl Int?
+  variety      String?
+  process      String? // lavado, natural, honey
+  roast        RoastLevel
+  tastingNotes String[]
+  score        Float? // puntaje SCA
+  active       Boolean    @default(true)
+  createdAt    DateTime   @default(now())
+  variants     Variant[]
+  reviews      Review[]
+
+  @@index([brandId])
+  @@index([origin])
+  @@index([roast])
+}
+
+model Variant {
+  id            String         @id @default(cuid())
+  productId     String
+  product       Product        @relation(fields: [productId], references: [id], onDelete: Cascade)
+  sku           String         @unique
+  weightGrams   Int
+  grind         GrindType      @default(WHOLE_BEAN)
+  priceCop      Int
+  stock         Int            @default(0)
+  roastedAt     DateTime? // fecha de tueste del lote
+  maxFreshDays  Int            @default(30)
+  active        Boolean        @default(true)
+  orderItems    OrderItem[]
+  subscriptions Subscription[]
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  rating    Int
+  comment   String?
+  createdAt DateTime @default(now())
+
+  @@unique([productId, userId])
+}
+
+// ───────── Pedidos ─────────
+model Order {
+  id          String      @id @default(cuid())
+  number      Int         @unique @default(autoincrement())
+  userId      String
+  user        User        @relation(fields: [userId], references: [id])
+  addressId   String
+  address     Address     @relation(fields: [addressId], references: [id])
+  status      OrderStatus @default(CREATED)
+  subtotalCop Int
+  shippingCop Int
+  discountCop Int         @default(0)
+  totalCop    Int
+  createdAt   DateTime    @default(now())
+  subOrders   SubOrder[]
+  payments    Payment[]
+}
+
+model SubOrder {
+  id             String         @id @default(cuid())
+  orderId        String
+  order          Order          @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  brandId        String
+  brand          Brand          @relation(fields: [brandId], references: [id])
+  status         SubOrderStatus @default(PENDING)
+  subtotalCop    Int
+  shippingCop    Int
+  commissionCop  Int
+  carrier        String?
+  trackingNumber String?
+  shippedAt      DateTime?
+  deliveredAt    DateTime?
+  items          OrderItem[]
+  payoutId       String?
+  payout         Payout?        @relation(fields: [payoutId], references: [id])
+}
+
+model OrderItem {
+  id           String   @id @default(cuid())
+  subOrderId   String
+  subOrder     SubOrder @relation(fields: [subOrderId], references: [id], onDelete: Cascade)
+  variantId    String
+  variant      Variant  @relation(fields: [variantId], references: [id])
+  productName  String // snapshot
+  quantity     Int
+  unitPriceCop Int
+}
+
+model Payment {
+  id          String        @id @default(cuid())
+  orderId     String
+  order       Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  method      PaymentMethod
+  status      PaymentStatus @default(PENDING)
+  amountCop   Int
+  providerRef String? // id de transacción en la pasarela
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([providerRef])
+}
+
+model Payout {
+  id            String       @id @default(cuid())
+  brandId       String
+  brand         Brand        @relation(fields: [brandId], references: [id])
+  periodStart   DateTime
+  periodEnd     DateTime
+  grossCop      Int
+  commissionCop Int
+  netCop        Int
+  status        PayoutStatus @default(PENDING)
+  paidAt        DateTime?
+  subOrders     SubOrder[]
+}
+
+// ───────── Suscripciones ─────────
+model Subscription {
+  id           String                @id @default(cuid())
+  userId       String
+  user         User                  @relation(fields: [userId], references: [id])
+  variantId    String
+  variant      Variant               @relation(fields: [variantId], references: [id])
+  addressId    String
+  address      Address               @relation(fields: [addressId], references: [id])
+  frequency    SubscriptionFrequency
+  status       SubscriptionStatus    @default(ACTIVE)
+  nextChargeAt DateTime
+  paymentToken String? // token de tarjeta de la pasarela
+  createdAt    DateTime              @default(now())
+}
+
+// ───────── Publicidad ─────────
+model AdCampaign {
+  id        String      @id @default(cuid())
+  brandId   String
+  brand     Brand       @relation(fields: [brandId], references: [id])
+  placement AdPlacement
+  productId String?
+  priceCop  Int
+  startsAt  DateTime
+  endsAt    DateTime
+  active    Boolean     @default(true)
+}
+
+// ───────── Infra ─────────
+model WebhookEvent {
+  id         String   @id @default(cuid())
+  provider   String
+  externalId String
+  payload    Json
+  processed  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  @@unique([provider, externalId])
+}

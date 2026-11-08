@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="cumbreGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#e0a458" />
+      <stop offset="100%" stop-color="#c76b3a" />
+    </linearGradient>
+    <linearGradient id="cumbreBg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2c1f15" />
+      <stop offset="100%" stop-color="#160f0b" />
+    </linearGradient>
+  </defs>
+  <!-- Escudo / Base redondeada -->
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#cumbreBg)" stroke="url(#cumbreGrad)" stroke-width="2.2" />
+  <!-- Sol / Grano de café naciente -->
+  <ellipse cx="32" cy="21" rx="7.5" ry="9.5" transform="rotate(-18 32 21)" fill="url(#cumbreGrad)" opacity="0.25" />
+  <ellipse cx="32" cy="21" rx="5.5" ry="7.5" transform="rotate(-18 32 21)" stroke="url(#cumbreGrad)" stroke-width="2" />
+  <path d="M30 14.5C32.5 18 31.5 23 34 27.5" stroke="url(#cumbreGrad)" stroke-width="1.8" stroke-linecap="round" />
+  <!-- Cumbres andinas -->
+  <path d="M10 47L24 27L34 39L42 29L54 47H10Z" fill="url(#cumbreGrad)" fill-opacity="0.18" />
+  <path d="M10 47L24 27L34 39L42 29L54 47" stroke="url(#cumbreGrad)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+  <!-- Base horizontal cálida -->
+  <path d="M14 51H50" stroke="#e0a458" stroke-width="2" stroke-linecap="round" opacity="0.65" />
+</svg>
+
