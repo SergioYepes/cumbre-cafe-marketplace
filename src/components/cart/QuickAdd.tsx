@@ -2,7 +2,7 @@
 
 import { useCart, type CartLine } from "./CartProvider";
 
-/** Botón compacto "Añadir" de la tarjeta: agrega la variante más económica disponible. */
+/** Botón de compra rápida de la tarjeta de producto. */
 export default function QuickAdd({ line, disabled }: { line: Omit<CartLine, "quantity"> | null; disabled?: boolean }) {
   const { add } = useCart();
   return (
@@ -12,7 +12,7 @@ export default function QuickAdd({ line, disabled }: { line: Omit<CartLine, "qua
       disabled={disabled || !line}
       onClick={() => line && add(line)}
     >
-      {disabled || !line ? "Agotado" : "Añadir"}
+      {disabled || !line ? "Agotado" : "+ Agregar"}
     </button>
   );
 }

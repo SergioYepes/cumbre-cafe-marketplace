@@ -58,23 +58,12 @@ export const CumbreLogo = ({ size = 34, className }: { size?: number; className?
     aria-label="Logo de Cumbre"
     role="img"
   >
-    <defs>
-      <linearGradient id="cumbreLogoGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stopColor="#e0a458" />
-        <stop offset="100%" stopColor="#c76b3a" />
-      </linearGradient>
-      <linearGradient id="cumbreLogoBg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stopColor="#2c1f15" />
-        <stop offset="100%" stopColor="#160f0b" />
-      </linearGradient>
-    </defs>
-    <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#cumbreLogoBg)" stroke="url(#cumbreLogoGrad)" strokeWidth="2.4" />
-    <ellipse cx="32" cy="21" rx="7.5" ry="9.5" transform="rotate(-18 32 21)" fill="url(#cumbreLogoGrad)" opacity="0.22" />
-    <ellipse cx="32" cy="21" rx="5.5" ry="7.5" transform="rotate(-18 32 21)" stroke="url(#cumbreLogoGrad)" strokeWidth="2" />
-    <path d="M30 14.5C32.5 18 31.5 23 34 27.5" stroke="url(#cumbreLogoGrad)" strokeWidth="1.8" strokeLinecap="round" />
-    <path d="M10 47L24 27L34 39L42 29L54 47H10Z" fill="url(#cumbreLogoGrad)" fillOpacity="0.2" />
-    <path d="M10 47L24 27L34 39L42 29L54 47" stroke="url(#cumbreLogoGrad)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M14 51H50" stroke="#e0a458" strokeWidth="2" strokeLinecap="round" opacity="0.65" />
+    <rect x="2" y="2" width="60" height="60" rx="10" fill="#181310" stroke="#B84A27" strokeWidth="2.5" />
+    <circle cx="32" cy="20" r="6.5" fill="#D9822B" fillOpacity="0.22" stroke="#D9822B" strokeWidth="2" />
+    <path d="M30.5 14.5C32.5 17.5 31.5 21.5 33.5 25.5" stroke="#D9822B" strokeWidth="1.8" strokeLinecap="round" />
+    <path d="M10 47L23 27L33 38L42 28L54 47H10Z" fill="#B84A27" fillOpacity="0.28" />
+    <path d="M10 47L23 27L33 38L42 28L54 47" stroke="#FAF7F2" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M14 52H50" stroke="#D9822B" strokeWidth="2.2" strokeLinecap="round" />
   </svg>
 );
 
